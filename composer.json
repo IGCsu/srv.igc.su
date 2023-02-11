@@ -1,0 +1,22 @@
+{
+    "name": "igc/srv.igc.su",
+    "description": "Service site for IGC",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "app/"
+        ]
+    },
+    "authors": [
+        {
+            "name": "BVN4",
+            "email": "ruslan2804y@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/routing": "^6.2",
+        "symfony/http-foundation": "^6.2"
+    }
+}
