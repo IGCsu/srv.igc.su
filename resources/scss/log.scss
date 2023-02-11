@@ -1,0 +1,96 @@
+.logs {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+
+  position: relative;
+
+  &-content {
+    height: 100%;
+    width: 80%;
+
+    overflow: hidden scroll;
+
+    font-family: monospace;
+
+    background: #222;
+
+    transition: 0.2s;
+
+    div {
+      padding-left: 30px;
+      text-indent: -20px;
+
+      &:nth-child(2n) {
+        background: #0003;
+      }
+    }
+
+    &-black {
+      color: #000000;
+    }
+
+    &-red {
+      color: #f44336;
+    }
+
+    &-green {
+      color: #4caf50;
+    }
+
+    &-yellow {
+      color: #ffeb3b;
+    }
+
+    &-blue {
+      color: #03a9f4;
+    }
+
+    &-magenta {
+      color: #c2185b;
+    }
+
+    &-cyan {
+      color: #30d5c8;
+    }
+
+    &-light_gray {
+      color: #cccccc;
+    }
+
+    &-dark_gray {
+      color: #767676;
+    }
+
+    &-crimson {
+      color: #b71c1c;
+    }
+  }
+
+  &-list {
+    height: 100%;
+    width: 20%;
+
+    border-right: 4px solid #0005;
+
+    &-item {
+      padding: 5px 10px;
+
+      font-size: 21px;
+      font-family: monospace;
+
+      cursor: pointer;
+
+      transition: 0.2s;
+
+      &.active {
+        background: #0002;
+      }
+
+      &:hover {
+        background: #0004;
+      }
+    }
+  }
+}

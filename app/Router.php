@@ -45,14 +45,17 @@ class Router
 
             call_user_func_array(
                 $matcher['_controller'],
-                (array)array_slice($matcher, 2, -1)
+                (array)array_slice($matcher, 1, -1)
             );
 
         } catch (MethodNotAllowedException $e) {
+            http_response_code(405);
             echo 'Route method is not allowed.';
         } catch (NoConfigurationException $e) {
+            http_response_code(404);
             echo 'Configuration does not exists.';
         } catch (ResourceNotFoundException $e) {
+            http_response_code(404);
             echo 'Route does not exists.';
         }
     }

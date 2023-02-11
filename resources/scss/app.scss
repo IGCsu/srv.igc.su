@@ -1,0 +1,17 @@
+@import 'variables';
+@import "normalize";
+* {
+  outline: none;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+body {
+  color: #eee;
+  text-align: left;
+  background-color: $dark0;
+  min-height: 100vh;
+}
+
+@import "log";
+
