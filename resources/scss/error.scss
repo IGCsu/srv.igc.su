@@ -1,0 +1,22 @@
+.error {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &-code {
+    color: #90959b40;
+    font-size: 25em;
+    text-shadow: 1px 1px #0003;
+  }
+
+  &-message {
+    color: #ccc;
+    font-size: 3em;
+    text-shadow: 1px 1px #0003;
+  }
+}

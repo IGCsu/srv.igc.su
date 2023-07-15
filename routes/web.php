@@ -8,19 +8,19 @@ Router::add('gitBotWebhook', '/git/bot/webhook')
     ->setDefault('_controller', [GitController::class, 'botWebhook'])
     ->setMethods(['POST']);
 
-Router::add('viewLog', '/log/{name}')
+Router::add('viewLog', '/log/{type}/{name}')
     ->setDefault('_controller', [LogController::class, 'view'])
-    ->addRequirements(['name'])
+    ->addRequirements(['type', 'name'])
     ->setMethods(['GET']);
 
-Router::add('getLogList', '/log/{name}/list')
+Router::add('getLogList', '/log/{type}/{name}/list')
     ->setDefault('_controller', [LogController::class, 'list'])
-    ->addRequirements(['name'])
+    ->addRequirements(['type', 'name'])
     ->setMethods(['GET']);
 
-Router::add('getLogContent', '/log/{name}/content/{file}')
+Router::add('getLogContent', '/log/{type}/{name}/content/{file}')
     ->setDefault('_controller', [LogController::class, 'content'])
-    ->addRequirements(['name', 'file'])
+    ->addRequirements(['type', 'name', 'file'])
     ->setMethods(['GET']);
 
 Router::init();

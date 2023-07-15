@@ -1,6 +1,8 @@
 <?php
 
-/** @var string $appName */
+use App\Exception\UserException;
+
+/** @var UserException $this */
 
 ?><!DOCTYPE html>
 <html lang="ru">
@@ -9,7 +11,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="appName" content="<?php echo $appName; ?>">
 
     <link rel="shortcut icon" href="favicon.png">
     <link rel="stylesheet" href="/css/app.css">
@@ -17,16 +18,14 @@
     <title>Logs</title>
 </head>
 <body>
-<div class="logs">
+<div class="error">
 
-    <div class="logs-list"></div>
-
-    <div class="logs-content"></div>
+    <div class="error-code"><?php echo $this->getCode() ?></div>
+    <div class="error-message"><?php echo $this->getMessage() ?></div>
 
 </div>
 
 <script type="text/javascript" src="/js/jquery-3.6.3.min.js"></script>
 <script type="text/javascript" src="/js/app.min.js"></script>
-<script type="text/javascript" src="/js/log.min.js"></script>
 </body>
 </html>

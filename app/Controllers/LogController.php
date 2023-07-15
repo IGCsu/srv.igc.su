@@ -2,30 +2,33 @@
 
 namespace App\Controllers;
 
+use App\Exception\UserException;
+use App\Log;
+
 class LogController
 {
-
-    public const LOG_ROOT = '/var/log/';
-
-    public static function view($name)
+    /**
+     * @throws UserException
+     */
+    public static function view(string $type, string $name)
     {
+        Log::validate($type, $name);
+
+        $appName = $type . DIRECTORY_SEPARATOR . $name;
+
         require_once APP_ROOT . '/resources/views/log.php';
     }
 
     /**
      * Выводит список файлов логов
+     * @param string $type
      * @param string $name
      * @return void
+     * @throws UserException
      */
-    public static function list(string $name)
+    public static function list(string $type, string $name)
     {
-        $root = self::getDirRoot($name);
-
-        if (!file_exists($root) || !is_dir($root)) {
-            http_response_code(404);
-            echo 'App logs not found.';
-            exit;
-        }
+        $root = Log::validate($type, $name);
 
         $logs = [];
 
@@ -44,19 +47,15 @@ class LogController
     /**
      * Выводит содержимое файла лога
      * Можно отправить параметр offset, позволяющий обрезать получаемый лог
+     * @param string $type
      * @param string $name
      * @param string $file
      * @return void
+     * @throws UserException
      */
-    public static function content(string $name, string $file)
+    public static function content(string $type, string $name, string $file)
     {
-        $root = self::getFileRoot($name, $file);
-
-        if (!file_exists($root)) {
-            http_response_code(404);
-            echo 'App logs not found.';
-            exit;
-        }
+        $root = Log::validate($type, $name, $file);
 
         $offset = $_GET['offset'] ?? 0;
         $content = file_get_contents($root, FALSE, NULL, $offset);
@@ -65,16 +64,6 @@ class LogController
             'offset' => strlen($content) + $offset,
             'content' => $content
         ], JSON_UNESCAPED_UNICODE);
-    }
-
-    public static function getDirRoot(string $name): string
-    {
-        return self::LOG_ROOT . $name;
-    }
-
-    public static function getFileRoot(string $name, string $file): string
-    {
-        return self::getDirRoot($name) . '/' . $file;
     }
 
 }
