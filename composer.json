@@ -17,6 +17,7 @@
     ],
     "require": {
         "symfony/routing": "^6.2",
-        "symfony/http-foundation": "^6.2"
+        "symfony/http-foundation": "^6.2",
+        "vlucas/phpdotenv": "^5.5"
     }
 }

@@ -10,5 +10,7 @@ require_once '../vendor/autoload.php';
 // Load Config
 require_once '../config/config.php';
 
+\App\Env::load();
+
 // Routes
 require_once '../routes/web.php';
