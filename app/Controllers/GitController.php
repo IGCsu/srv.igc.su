@@ -21,6 +21,6 @@ class GitController
             throw new UserException('Hook secret does not match', 401);
         }
 
-        shell_exec('sudo -S systemctl restart IGCbV2.service 2>&1');
+        shell_exec('sudo -S systemctl restart IGCb.service 2>&1');
     }
 }
